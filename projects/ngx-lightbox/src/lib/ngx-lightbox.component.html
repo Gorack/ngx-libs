@@ -1,0 +1,41 @@
+<div [class]="classNames.Container"
+     [style.transitionDuration.ms]="config.visibleAnimationTime"
+     [ngClass]="{'show': showLightbox, 'animation': allowAnimation}">
+    <div [class]="classNames.Content"
+         [style.width.%]="contentWidthPercent">
+        <div #contentInnerEl [class]="classNames.ContentInner"
+             [style.transform]="'translateX(-' + contentInnerOffset + 'px)'">
+
+            <div *ngFor="let item of items"
+                 [id]="item.id"
+                 [class]="classNames.Item"
+                 [ngClass]="{'active': item.isActive}">
+
+                <img *ngIf="item.type === 'image'" [src]="item.source">
+                <video #videoElement *ngIf="item.type === 'video'" [src]="item.source" controls (loadeddata)="videoLoaded(videoElement, item)"></video>
+            </div>
+
+        </div>
+
+        <button class="close"
+                [style.top.px]="config.containerPadding"
+                [style.right.px]="config.containerPadding"
+                (click)="close()">
+            <i class="fa fa-times-circle"></i>
+        </button>
+
+        <ng-container *ngIf="items.length > 1">
+            <button class="pre"
+                    [style.left.px]="config.containerPadding"
+                    (click)="navigate($event,'prev')">
+                <i class="fa fa-arrow-circle-left"></i>
+            </button>
+
+            <button class="next"
+                    [style.right.px]="config.containerPadding"
+                    (click)="navigate($event, 'next')">
+                <i class="fa fa-arrow-circle-right"></i>
+            </button>
+        </ng-container>
+    </div>
+</div>

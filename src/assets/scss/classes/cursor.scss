@@ -1,0 +1,7 @@
+$values: move, pointer, none, auto;
+
+@each $value in $values {
+    .cursor-#{$value} {
+        cursor: $value !important;
+    }
+}

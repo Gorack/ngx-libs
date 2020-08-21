@@ -1,0 +1,117 @@
+$class-prefix: ngx-lightbox;
+$content-max-height: 90vh;
+
+:host ::ng-deep {
+    .#{$class-prefix}-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, .7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition-property: opacity;
+        transition-timing-function: ease-in-out;
+
+        &:not(.show) {
+            opacity: 0;
+        }
+
+        &.animation {
+            .#{$class-prefix}-content__inner {
+                transition: transform .3s ease-in-out;
+            }
+        }
+    }
+
+    .#{$class-prefix}-content {
+        max-height: $content-max-height;
+
+        img,
+        video {
+            width: 100%;
+            max-height: $content-max-height;
+        }
+
+        &__inner {
+            display: flex;
+            max-height: $content-max-height;
+
+            &.drag {
+                cursor: grab;
+            }
+
+            &.dragging {
+                cursor: grabbing;
+            }
+        }
+    }
+
+    .#{$class-prefix}-item {
+        display: flex;
+        width: 100%;
+        flex: 0 0 100%;
+        transition-property: opacity, filter;
+        transition-timing-function: ease-in-out;
+        transition-duration: .3s;
+        background: black;
+
+        &:not(:first-of-type) {
+            margin-left: 30px;
+        }
+
+        &:not(.active) {
+            opacity: .5;
+            filter: grayscale(1);
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        &.active {
+            z-index: 1;
+        }
+    }
+
+    button {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        outline: none;
+
+        &,
+        i {
+            line-height: 1;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        &.close {
+            top: 0;
+            right: 0;
+        }
+
+        &.pre,
+        &.next {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &.pre {
+            left: 0;
+        }
+
+        &.next {
+            right: 0;
+        }
+    }
+}
+
+::ng-deep {
+    .#{$class-prefix}-open {
+        overflow: hidden !important;
+    }
+}
