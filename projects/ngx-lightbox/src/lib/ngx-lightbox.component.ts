@@ -9,6 +9,7 @@ import {
     OnInit,
     ViewChild
 } from '@angular/core';
+import {IInfiniteItemsConfig} from 'projects/ngx-lightbox/src/lib/infinite-items.interface';
 import {NgxLightboxItemModel} from './ngx-lightbox-item.model';
 import {
     NGX_LIGHTBOX_CLASS_NAMES,
@@ -135,6 +136,21 @@ export class NgxLightboxComponent implements OnInit, OnDestroy {
                 resolve();
             }, this.config.visibleAnimationTime);
         });
+    }
+
+    /**
+     * @return {IInfiniteItemsConfig}
+     */
+    getInfiniteItemsConfig(): IInfiniteItemsConfig {
+
+        if (!this.config.infinite) {
+            return null;
+        }
+
+        return {
+            radius: 3,
+            currentIndex: this.activeItemIndex
+        };
     }
 
     /**

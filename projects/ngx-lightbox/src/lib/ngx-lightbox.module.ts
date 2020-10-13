@@ -6,9 +6,10 @@ import NgxLightboxUtils from './ngx-lightbox.utils';
 import {NgxLightboxComponent} from './ngx-lightbox.component';
 import {NgxLightboxDirective} from './ngx-lightbox.directive';
 import { NgxLightboxDragDirective } from './ngx-lightbox-drag.directive';
+import { InfiniteItemsPipe } from './infinite-items.pipe';
 
 @NgModule({
-    declarations: [NgxLightboxComponent, NgxLightboxDirective, NgxLightboxDragDirective],
+    declarations: [NgxLightboxComponent, NgxLightboxDirective, NgxLightboxDragDirective, InfiniteItemsPipe],
     imports: [
         CommonModule
     ],

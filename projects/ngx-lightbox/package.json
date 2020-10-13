@@ -1,7 +1,20 @@
 {
-    "name": "ngx-lightbox",
-    "author": "Szabolcs Pinter",
-    "version": "1.0.0",
+    "name": "@gorack/ngx-lightbox",
+    "version": "1.0.1",
+    "description": "Lightbox lib for Angular 10+",
+    "author": "Szabolcs Pinter <szabolcs.pinter.94@gmail.com>",
+    "homepage": "https://github.com/Gorack/ngx-libs",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Gorack/ngx-libs"
+    },
+    "keywords": [
+        "Angular",
+        "image",
+        "video",
+        "lightbox"
+    ],
+    "license": "MIT",
     "peerDependencies": {
         "@angular/common": "^10.0.9",
         "@angular/core": "^10.0.9"
